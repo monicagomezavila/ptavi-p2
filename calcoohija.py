@@ -26,11 +26,17 @@ if __name__ == "__main__":
         result = numeros.suma()
     elif sys.argv[2] == "resta":
         result = numeros.resta()
-    elif sys.argv[2] == "multiplicacion":
+    elif sys.argv[2] == "multiplica":
         result = numeros.mult()
-    elif sys.argv[2] == "division":
-        result = numeros.div()
+    elif sys.argv[2] == "divide":
+        try:
+           result = numeros.div()
+        except ZeroDivisionError:
+           print("Division by zero is not allowed")
     else:
-        sys.exit('Operación sólo puede ser suma, resta, division, multiplicaion.')
+        sys.exit('Operación sólo puede ser suma, resta, divide, multiplica.')
 
-    print(result)
+    try:   
+       print(result)
+    except NameError:
+       print("No se puede mostrar el resultado")
