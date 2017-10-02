@@ -12,20 +12,46 @@ except IndexError:
 
 fich = open(fichero, "r") 
 
-operaciones = []
 
 for linea in fich:
     linea = linea.replace("\n","")
     operaciones = linea.split(",")
+    elementos = len(operaciones)
+    numeros_sobran = operaciones[3:elementos]
     
+    operando1 = int(operaciones[1])
+    operando2 = int(operaciones[2])
+  
     if operaciones[0] == "suma":
-        print("h")
+        result = operando1+operando2
+        for numero in numeros_sobran:
+            result = result + int(numero)
+        
+        print(result)
+
     elif operaciones[0] == "resta":
-        print("d")
+        result = operando1-operando2
+        for numero in numeros_sobran:
+            result = result - int(numero)
+        
+        print(result)
+
     elif operaciones[0] == "multiplica":
-        print("ff")
+        result = operando1*operando2
+        for numero in numeros_sobran:
+            result = result * int(numero)
+        
+        print(result)
+
     elif operaciones[0] == "divide":
-        print("ee")
+        try:
+           result = operando1/operando2
+        except ZeroDivisionError:
+           print("Division by zero is not allowed")         
+        for numero in numeros_sobran:
+            result = result / int(numero)
+        
+        print(result)
     
     else:
         print('Operación sólo puede ser suma, resta, divide, multiplica.')
